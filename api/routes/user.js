@@ -46,7 +46,7 @@ router.post('/login', (req,res)=>{
                     userType : user[0].userType,
 
                 },'this is dummy text', {
-                    expiresIn : "240s"
+                    expiresIn : "1hr"
                 });
                 res.status(200).json({
                     username:user[0].username,
