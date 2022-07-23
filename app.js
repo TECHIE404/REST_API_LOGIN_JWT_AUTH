@@ -7,7 +7,8 @@ const userRoute = require('./api/routes/user');
 
 const app = express();
 
-mongoose.connect('mongodb://127.0.0.1:27017');
+// mongoose.connect('mongodb://127.0.0.1:27017');
+mongoose.connect('mongodb+srv://rahul:loginjwt@sbs.h26pfxu.mongodb.net/?retryWrites=true&w=majority');
 
 mongoose.connection.on('error', () =>{
     console.log('Connection fails');
