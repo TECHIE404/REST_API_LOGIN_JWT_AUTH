@@ -15,7 +15,7 @@ router.get('/',checkAuth,(req, res)=>{
 
 });
 
-router.get('/:id', (req, res)=>{
+router.get('/:id',checkAuth,(req, res)=>{
     Student.findById(req.params.id).then(result=>{
         res.status(200).json({"result" : result});
     }).catch(error=>{
@@ -24,7 +24,7 @@ router.get('/:id', (req, res)=>{
     })
 });
 
-router.post('/', (req, res)=>{
+router.post('/',checkAuth,(req, res)=>{
     const student = new Student({
         _id: new mongoose.Types.ObjectId,
         name: req.body.name,
@@ -41,7 +41,7 @@ router.post('/', (req, res)=>{
     console.log("body",req.body);
 });
 
-router.delete('/:id', (req, res)=>{
+router.delete('/:id',checkAuth,(req, res)=>{
     Student.remove({_id:req.params.id}).then((result)=>{
         res.status(200).json({message: 'Student deleted successefully',result: result});
     }).catch(error=>{
@@ -49,7 +49,7 @@ router.delete('/:id', (req, res)=>{
     })
 }); 
 
-router.put('/:id',(req, res)=>{
+router.put('/:id',checkAuth,(req, res)=>{
     console.log(req.params.id);
     Student.findOneAndUpdate({_id: req.params.id},{
         $set:{

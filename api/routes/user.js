@@ -9,7 +9,7 @@ router.get('/', (req, res)=>{
     res.status(404).json({msg: 'bad request!'});
 });
 
-router.post('/', (req, res)=>{
+router.post('/signUp', (req, res)=>{
     bcrypt.hash(req.body.password,10,(err, hash)=>{
         if(err){
             return  res.status(500).json({error:err});
